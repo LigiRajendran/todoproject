@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-secondary text-white">
+
+    <div class="row">
+      <div class="col-mid-6">
+          <div class="banner">
+              <div class="banner-text">
+                  <h1><center>Time Table</center></h1>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+<form method="post">
+  <div class="container ">
+    <div class="row">
+        <form method="post">
+      <div class="form-group col-md-6 mb-3 shadow ">
+          {% csrf_token %}
+
+        <div class="form-group  ">
+         <label >Enter the day</label>
+          <select class="form-control" name="day">
+             <option>Sunday</option>
+             <option>Monday</option>
+             <option>Tuesday</option>
+             <option>Wednesday</option>
+             <option>Thursday</option>
+             <option>Friday</option>
+             <option>Saturday</option>
+           </select>
+        </div>
+          <div class="form-group shadow">
+            <label >Enter the task</label>
+            <input type="text"  class="form-control" name= "task">
+          </div>
+          <div class="form-group shadow">
+            <label >Enter the date</label>
+            <input type="date"  class="form-control" name= "date">
+          </div>
+          <input type="submit" class="btn btn-success">
+      </div>
+
+         <div class="form-group col-md-6 mb-3 shadow ">
+            {% for i in task1 %}
+          <div class="card">
+              <div class="class-body ">
+                  <h5 class="card-title">{{i.day}}</h5>
+              </div>
+           <p><b>{{i.task}}</b></p>
+              <p><b>{{i.date}}</b></p>
+               <a class="btn btn-warning" href="{% url 'timetableapp:update' i.id %}">update</a>
+                <a class="btn btn-danger" href="{% url 'timetableapp:delete' i.id %}">delete</a>
+        </div>
+
+        <br>
+        {% endfor %}
+
+
+        {% endblock %}
+      </div>
+
+    </div>
+</div>
+  </form>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+    <div class="row">
+        <div class="form-group col-md-6 mb-3 shadow ">
+            {% for i in task4 %}
+          <div class="card">
+              <div class="class-body ">
+                  <h5 class="card-title">{{task4.day}}</h5>
+              </div>
+           <p><b>{{task4.task}}</b></p>
+              <p><b>{{task4.date}}</b></p>
+
+        </div>
+
+        <br>
+        {% endfor %}
+        </div>
+    </div>
+
+
+</div>
+{% endblock%}
